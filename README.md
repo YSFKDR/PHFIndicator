@@ -17,7 +17,7 @@ Configure the indicator parameters through the NinjaTrader 8 interface:
 - **Minimum Hits**: Minimum number of hits to consider.
 
 ## Example
-![Example Chart](images/example_chart.png)
+![Example Chart](images/PHFIndicator_Settings_Display.png)
 
 ## Code Example
 ```csharp
