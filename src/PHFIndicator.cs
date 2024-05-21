@@ -47,8 +47,6 @@ namespace NinjaTrader.NinjaScript.Indicators.YSF
 		
 		protected override void OnStateChange()
 		{
-			Print("OnStateChange entered."); // Debug statement
-			
 			// Handle different states of the indicator
 			if (State == State.SetDefaults)
 			{
@@ -75,6 +73,7 @@ namespace NinjaTrader.NinjaScript.Indicators.YSF
 			}
 			else if (State == State.Configure)
 			{
+   				ClearOutputWindow();
 				Print("Configuring indicator."); // Debug statement
 				
 				// Configure indicator
