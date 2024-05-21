@@ -62,11 +62,25 @@ Here is an example of how you might configure the PHF Indicator for a daily char
 - **Lookback Period**: 20 (looking back 20 days)
 - **Minimum Hits**: 3 (only consider levels that have been hit at least 3 times)
 
+## Example Configuration
+Here is an example of how you might configure the PHF Indicator for a daily chart:
+
+- **Lookback Period**: 20 (looking back 20 days)
+- **Minimum Hits**: 3 (only consider levels that have been hit at least 3 times)
+
+## Example
+![Example Chart](../images/PHFIndicator_Settings_Display.png)
+
 ## Troubleshooting
 If you encounter any issues while using the PHF Indicator, consider the following troubleshooting steps:
 
 - **Check the NinjaScript Output Window**: Look for any error messages or debug prints that can help identify the issue.
 - **Review Parameter Settings**: Ensure that the `Lookback Period` and `Minimum Hits` are set to appropriate values for your chart and market.
+
+## Output Window Log
+The PHF Indicator generates logs that can be viewed in the NinjaTrader output window. Here's an example of the output:
+
+![Output Window Log](../images/OutputWindowLog.png)
 
 ## Conclusion
 The PHF Indicator is a powerful tool for identifying frequently hit price levels, which can act as significant support or resistance levels. By customizing the parameters, you can tailor the indicator to suit your specific trading needs and time frames.
