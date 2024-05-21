@@ -42,8 +42,8 @@ namespace NinjaTrader.NinjaScript.Indicators.YSF
 		private	double minKeyWithHighestValue = double.MaxValue;
 		
 		private System.Windows.Controls.Button _button;
-    private Chart _chartWindow;
-    private bool _isToolBarButtonAdded;
+        private Chart _chartWindow;
+        private bool _isToolBarButtonAdded;
 		
 		protected override void OnStateChange()
 		{
@@ -102,8 +102,8 @@ namespace NinjaTrader.NinjaScript.Indicators.YSF
 				SetZOrder(-1);
 			}
 			else if (State == State.Terminated)
-      {
-			      	Print("Terminating."); // Debug statement
+            {
+				Print("Terminating."); // Debug statement
 				
 				// Dispose toolbar button when the indicator is terminated
 				if (_chartWindow != null)
@@ -113,7 +113,7 @@ namespace NinjaTrader.NinjaScript.Indicators.YSF
                         DisposeToolBar();
                     }));
                 }
-        }
+            }
 		}
 
 		// Override display name property
@@ -125,7 +125,7 @@ namespace NinjaTrader.NinjaScript.Indicators.YSF
 		// Dispose the toolbar button
 		private void DisposeToolBar()
         {
-			      Print("Disposing toolbar."); // Debug statement
+			Print("Disposing toolbar."); // Debug statement
 			
             if (_button != null)
             {
@@ -137,7 +137,7 @@ namespace NinjaTrader.NinjaScript.Indicators.YSF
 		// Add button to the toolbar
 		private void AddButtonToToolbar()
         {
-			      Print("Adding button to toolbar."); // Debug statement
+			Print("Adding button to toolbar."); // Debug statement
 			
             _chartWindow = Window.GetWindow(this.ChartControl.Parent) as Chart;
 
@@ -149,11 +149,11 @@ namespace NinjaTrader.NinjaScript.Indicators.YSF
 			
 			 // Create button style
 			 Style btnStyle = new Style();
-		   btnStyle.TargetType = typeof(System.Windows.Controls.Button);
+		     btnStyle.TargetType = typeof(System.Windows.Controls.Button);
 				
-		   btnStyle.Setters.Add(new Setter(System.Windows.Controls.Button.FontSizeProperty, 11.0));
-		   btnStyle.Setters.Add(new Setter(System.Windows.Controls.Button.FontFamilyProperty, new System.Windows.Media.FontFamily("Lato")));
-		   btnStyle.Setters.Add(new Setter(System.Windows.Controls.Button.FontWeightProperty, FontWeights.Regular));
+		     btnStyle.Setters.Add(new Setter(System.Windows.Controls.Button.FontSizeProperty, 11.0));
+		     btnStyle.Setters.Add(new Setter(System.Windows.Controls.Button.FontFamilyProperty, new System.Windows.Media.FontFamily("Lato")));
+		     btnStyle.Setters.Add(new Setter(System.Windows.Controls.Button.FontWeightProperty, FontWeights.Regular));
 			 btnStyle.Setters.Add(new Setter(System.Windows.Controls.Button.MarginProperty, new Thickness(2, 0, 2, 0)));
 			 btnStyle.Setters.Add(new Setter(System.Windows.Controls.Button.PaddingProperty, new Thickness(2, 2, 2, 2)));
 			 btnStyle.Setters.Add(new Setter(System.Windows.Controls.Button.ForegroundProperty, IsVisible ? Brushes.LimeGreen : Brushes.Red));
