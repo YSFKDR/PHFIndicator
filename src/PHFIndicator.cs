@@ -42,8 +42,8 @@ namespace NinjaTrader.NinjaScript.Indicators.YSF
 		private	double minKeyWithHighestValue = double.MaxValue;
 		
 		private System.Windows.Controls.Button _button;
-        private Chart _chartWindow;
-        private bool _isToolBarButtonAdded;
+        	private Chart _chartWindow;
+        	private bool _isToolBarButtonAdded;
 		
 		protected override void OnStateChange()
 		{
@@ -167,7 +167,7 @@ namespace NinjaTrader.NinjaScript.Indicators.YSF
 				// Create and add button to the toolbar
 				_button = new System.Windows.Controls.Button();
 				
-				_button.Content = Name;
+				_button.Content = "PHF";
 				_button.Style = btnStyle;
 				_chartWindow.MainMenu.Add(_button);
 				_button.Visibility = Visibility.Visible;
@@ -310,7 +310,14 @@ namespace NinjaTrader.NinjaScript.Indicators.YSF
 			// Set line color for drawing
 			SharpDX.Direct2D1.Brush lineColor = (hitlineStroke.Brush).ToDxBrush(RenderTarget);
 			lineColor.Opacity = (float)hitlineStroke.Opacity/100;
-						
+
+      			// Declare variables for text
+			TextLayout textLayout = new TextLayout(Core.Globals.DirectWriteFactory, "O", ChartControl.Properties.LabelFont.ToDirectWriteTextFormat(), 20, 10);
+			string label = "";
+			float txtwidth = textLayout.Metrics.Width;
+			float txtheight = textLayout.Metrics.Height;
+			SharpDX.Vector2 pThr = new SharpDX.Vector2();
+   
 			// Sort dictionary and draw lines
 			var sortedDict2 = (from entry in priceRows 
 				orderby entry.Value descending 
@@ -334,7 +341,26 @@ namespace NinjaTrader.NinjaScript.Indicators.YSF
 				{
 					// Draw MAX Hit line
 					if (kv.Key != maxKeyWithHighestValue && kv.Key != minKeyWithHighestValue)
-						{RenderTarget.DrawLine(pOne, pTwo, lineColor, hitlineStroke.Width, hitlineStroke.StrokeStyle);}
+					{
+     						RenderTarget.DrawLine(pOne, pTwo, lineColor, hitlineStroke.Width, hitlineStroke.StrokeStyle);
+
+	 					label = Bars.Instrument.MasterInstrument.FormatPrice(kv.Key);
+						textLayout = new TextLayout(Core.Globals.DirectWriteFactory, label,
+							ChartControl.Properties.LabelFont.ToDirectWriteTextFormat(),
+							2000,2000);
+							
+						txtwidth = textLayout.Metrics.Width;
+						txtheight = textLayout.Metrics.Height;
+						textLayout.TextAlignment = SharpDX.DirectWrite.TextAlignment.Center;
+						textLayout.MaxWidth = txtwidth;
+						textLayout.MaxHeight = txtheight;
+							
+						pThr = new SharpDX.Vector2();
+						pThr.X = (float)pTwo.X-txtwidth;
+						pThr.Y = (float)pTwo.Y-(txtheight);
+							
+						RenderTarget.DrawTextLayout((pThr), (textLayout), lineColor);
+ 					}
 				}
 			}
 
@@ -350,7 +376,24 @@ namespace NinjaTrader.NinjaScript.Indicators.YSF
 			pTwo.X = (float)x2;
 			pTwo.Y = (float)y1;
 			RenderTarget.DrawLine(pOne, pTwo, lineColor, resistanceStroke.Width, resistanceStroke.StrokeStyle);
+
+   			label = Bars.Instrument.MasterInstrument.FormatPrice(maxKeyWithHighestValue);
+			textLayout = new TextLayout(Core.Globals.DirectWriteFactory, label,
+				ChartControl.Properties.LabelFont.ToDirectWriteTextFormat(),
+				2000,2000);
 			
+			txtwidth = textLayout.Metrics.Width;
+			txtheight = textLayout.Metrics.Height;
+			textLayout.TextAlignment = SharpDX.DirectWrite.TextAlignment.Center;
+			textLayout.MaxWidth = txtwidth;
+			textLayout.MaxHeight = txtheight;
+			
+			pThr = new SharpDX.Vector2();
+			pThr.X = (float)pTwo.X-txtwidth;
+			pThr.Y = (float)pTwo.Y-(txtheight);
+			
+			RenderTarget.DrawTextLayout((pThr), (textLayout), lineColor);
+   
 			// Draw support line
 			lineColor = (supportStroke.Brush).ToDxBrush(RenderTarget);
 			lineColor.Opacity = (float)supportStroke.Opacity/100;
@@ -363,7 +406,24 @@ namespace NinjaTrader.NinjaScript.Indicators.YSF
 			pTwo.X = (float)x2;
 			pTwo.Y = (float)y1;
 			RenderTarget.DrawLine(pOne, pTwo, lineColor, supportStroke.Width, supportStroke.StrokeStyle);
+
+   			label = Bars.Instrument.MasterInstrument.FormatPrice(minKeyWithHighestValue);
+			textLayout = new TextLayout(Core.Globals.DirectWriteFactory, label,
+				ChartControl.Properties.LabelFont.ToDirectWriteTextFormat(),
+				2000,2000);
 			
+			txtwidth = textLayout.Metrics.Width;
+			txtheight = textLayout.Metrics.Height;
+			textLayout.TextAlignment = SharpDX.DirectWrite.TextAlignment.Center;
+			textLayout.MaxWidth = txtwidth;
+			textLayout.MaxHeight = txtheight;
+			
+			pThr = new SharpDX.Vector2();
+			pThr.X = (float)pTwo.X-txtwidth;
+			pThr.Y = (float)pTwo.Y-(txtheight);
+			
+			RenderTarget.DrawTextLayout((pThr), (textLayout), lineColor);
+   
 			// Restore previous antialias mode
 			lineColor.Dispose();
 			RenderTarget.AntialiasMode = oldAntialiasMode;
