@@ -85,4 +85,4 @@ The PHF Indicator generates logs that can be viewed in the NinjaTrader output wi
 ## Conclusion
 The PHF Indicator is a powerful tool for identifying frequently hit price levels, which can act as significant support or resistance levels. By customizing the parameters, you can tailor the indicator to suit your specific trading needs and time frames.
 
-For any further assistance, feel free to refer to the detailed documentation provided or contact the developer through the [GitHub repository](https://github.com/your-repo-url).
+For any further assistance, feel free to refer to the detailed documentation provided or contact the developer through the [GitHub repository](../src/PHFIndicator.cs).
