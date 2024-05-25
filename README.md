@@ -15,7 +15,7 @@ This NinjaTrader 8 indicator calculates hits on high or low prices of each bar w
 Configure the indicator parameters through the NinjaTrader 8 interface:
 - **Lookback Period**: Number of bars to look back.
 - **Minimum Hits**: Minimum number of hits to consider.
-[GitHub repository](../docs/usage_guide.md).
+- [GitHub repository](../docs/usage_guide.md).
 
 ## Example
 ![Example Chart](images/PHFIndicator_Settings_Display.png)
