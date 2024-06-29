@@ -1,7 +1,7 @@
 # Price Hit Frequency (PHF) Indicator for NinjaTrader 8
 
 ## Description
-This NinjaTrader 8 indicator calculates hits on high or low prices of each bar within a specified period and visualizes key levels on the chart.
+This NinjaTrader 8 indicator calculates hits on high or low prices of each bar within a specified period and visualizes key levels on the chart. Identifying these key levels is crucial for traders as they often represent significant support and resistance areas where price action is likely to react. By marking these levels, the indicator helps traders make more informed decisions about entry, exit, and stop-loss placements. Understanding how price interacts with these key levels can improve trading accuracy and enhance strategy development, ultimately contributing to better risk management and profitability.
 
 ## Features
 - **Lookback Period**: Specify the number of bars to look back.
